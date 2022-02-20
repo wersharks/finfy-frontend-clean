@@ -37,12 +37,12 @@ const SignInSide = () => {
     });
 
     axios
-      .post("http://34.68.150.75:8080/auth/api/v1/login/", {
+      .post("http://172.16.63.149:8080/auth/api/v1/login/", {
         login: data.get("username"),
         password: data.get("password"),
       })
       .then(function (response) {
-        console.log(response);
+        console.log(response.data.token);
         localStorage.setItem("token", response.data.token);
         window.location.href = "/dashboard";
       })

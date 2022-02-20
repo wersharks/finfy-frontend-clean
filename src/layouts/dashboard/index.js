@@ -41,7 +41,7 @@ function Dashboard() {
   const { rank, profit } = reportsLineChartData;
   const [wallet, setWallet] = useState(0);
   axios
-    .get("http://34.68.150.75:8080/finance/balance", {
+    .get("http://172.16.63.149:8080/finance/balance", {
       headers: {
         authorization: "Token " + localStorage.getItem("token"),
       },

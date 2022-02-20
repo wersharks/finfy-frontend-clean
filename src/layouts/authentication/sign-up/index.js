@@ -60,7 +60,7 @@ const SignUpSide = () => {
     });
 
     axios
-      .post("http://34.68.150.75:8080/auth/api/v1/register/", {
+      .post("http://172.16.63.149:8080/auth/api/v1/register/", {
         username: data.get("username"),
         password: data.get("password"),
         first_name: data.get("firstname"),

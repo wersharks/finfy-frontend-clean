@@ -20,7 +20,7 @@ function Overview() {
   const [name, setName] = useState("Name");
   const [email, setEmail] = useState("Email");
   axios
-    .get("http://34.68.150.75:8080/auth/api/v1/profile/", {
+    .get("http://172.16.63.149:8080/auth/api/v1/profile/", {
       headers: {
         authorization: "Token " + localStorage.getItem("token"),
       },

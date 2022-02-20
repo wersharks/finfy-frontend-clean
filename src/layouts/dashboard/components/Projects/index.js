@@ -27,30 +27,10 @@ import Paper from "@mui/material/Paper";
 import axios from "axios";
 import { useState } from "react";
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
-  },
-}));
-
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  "&:nth-of-type(odd)": {
-    backgroundColor: theme.palette.action.hover,
-  },
-  // hide last border
-  "&:last-child td, &:last-child th": {
-    border: 0,
-  },
-}));
-
 function Projects() {
   const [history, setHistory] = useState(["No entry exists"]);
   axios
-    .get("http://34.68.150.75:8080/finance/history", {
+    .get("http://172.16.63.149:8080/finance/history", {
       headers: {
         authorization: "Token " + localStorage.getItem("token"),
       },
@@ -63,23 +43,23 @@ function Projects() {
 
   return (
     <TableContainer component={Paper}>
-      <Table aria-label="customized table">
+      <Table sx={{ minWidth: 700 }}>
         <TableHead>
           <TableRow>
-            <StyledTableCell>Type</StyledTableCell>
-            <StyledTableCell align="right">Inital Amount</StyledTableCell>
-            <StyledTableCell>Final Amount</StyledTableCell>
-            <StyledTableCell>Time</StyledTableCell>
+            <TableCell>Type</TableCell>
+            <TableCell>Inital Amount</TableCell>
+            <TableCell>Final Amount</TableCell>
+            <TableCell align="right">Time</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {history.map((row) => (
-            <StyledTableRow key={row.name}>
-              <StyledTableCell scope="row">{row.type}</StyledTableCell>
-              <StyledTableCell scope="row">{row.initialAmt}</StyledTableCell>
-              <StyledTableCell>{row.finalAmt}</StyledTableCell>
-              <StyledTableCell align="right">{row.time}</StyledTableCell>
-            </StyledTableRow>
+            <TableRow key={row.name}>
+              <TableCell scope="row">{row.type}</TableCell>
+              <TableCell scope="row">{row.initialAmt}</TableCell>
+              <TableCell>{row.finalAmt}</TableCell>
+              <TableCell>{row.time}</TableCell>
+            </TableRow>
           ))}
         </TableBody>
       </Table>

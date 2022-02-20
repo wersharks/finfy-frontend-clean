@@ -40,7 +40,7 @@ import { useState } from "react";
 function Bank() {
   const [history, setHistory] = useState(["No record exists"]);
   axios
-    .get("http://34.68.150.75:8080/bank/history", {
+    .get("http://172.16.63.149:8080/bank/history", {
       headers: {
         authorization: "Token " + localStorage.getItem("token"),
       },
@@ -94,7 +94,7 @@ function Bank() {
     });
     axios
       .post(
-        "http://34.68.150.75:8080/bank/deposit",
+        "http://172.16.63.149:8080/bank/deposit",
         {
           amount: data.get("amount"),
           inves_type: deposit,
@@ -122,7 +122,7 @@ function Bank() {
     });
     axios
       .post(
-        "http://34.68.150.75:8080/bank/withdraw",
+        "http://172.16.63.149:8080/bank/withdraw",
         {
           id: data.get("withdraw"),
         },

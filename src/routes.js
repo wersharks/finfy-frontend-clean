@@ -5,10 +5,15 @@ import Profile from "layouts/profile";
 import Bank from "layouts/bank";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
-import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
+
+import ShowChartIcon from "@mui/icons-material/ShowChart";
+import Stock from "layouts/stock";
+import Crypto from "layouts/crypto";
 
 // @mui icons
 import Icon from "@mui/material/Icon";
+import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
+import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 
 const routes = [
   {
@@ -50,6 +55,22 @@ const routes = [
     icon: <AccountBalanceIcon />,
     route: "/bank",
     component: <Bank />,
+  },
+  {
+    type: "collapse",
+    name: "Stock",
+    key: "stock",
+    icon: <ShowChartIcon />,
+    route: "/stock",
+    component: <Stock />,
+  },
+  {
+    type: "collapse",
+    name: "Crypto",
+    key: "crypto",
+    icon: <MonetizationOnIcon />,
+    route: "/crypto",
+    component: <Crypto />,
   },
   {
     type: "hidden",
