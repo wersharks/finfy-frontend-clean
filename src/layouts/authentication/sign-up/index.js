@@ -57,8 +57,11 @@ const SignUpSide = () => {
       email: data.get("email"),
       user_type: profile,
       password_confirm: data.get("cnfpassword"),
+      coutry: data.get("country"),
+      state: data.get("state"),
+      city: data.get("city"),
+      school: data.get("school"),
     });
-
     axios
       .post("http://172.16.63.149:8080/auth/api/v1/register/", {
         username: data.get("username"),
@@ -68,6 +71,10 @@ const SignUpSide = () => {
         email: data.get("email"),
         user_type: profile,
         password_confirm: data.get("cnfpassword"),
+        coutry: data.get("country"),
+        state: data.get("state"),
+        city: data.get("city"),
+        school: data.get("school"),
       })
       .then(function (response) {
         console.log("user created");
@@ -189,6 +196,25 @@ const SignUpSide = () => {
                 type="password"
                 id="cnfpassword"
               />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="country"
+                label="Country"
+                id="country"
+              />
+              <TextField margin="normal" required fullWidth name="state" label="State" id="state" />
+              <TextField margin="normal" required fullWidth name="city" label="City" id="city" />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="school"
+                label="School"
+                id="school"
+              />
+
               <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
                 Sign Up
               </Button>

@@ -40,20 +40,34 @@ function Crypto() {
 
   const handleBuy = (event) => {
     event.preventDefault();
+
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
     console.log({
-      username: data.get("username"),
-      password: data.get("password"),
+      amount: data.get("amount"),
+      crypto_symbol: "bitcoin",
     });
 
     axios
-      .post("http://172.16.63.149:8080/crypto/buy", {
-        login: data.get("username"),
-        password: data.get("password"),
-      })
+      .post(
+        "http://172.16.63.149:8080/crypto/buy",
+        {
+          amount: data.get("amount"),
+          crypto_symbol: "bitcoin",
+        },
+        {
+          headers: {
+            authorization: "Token " + localStorage.getItem("token"),
+          },
+        }
+      )
       .then(function (response) {
-        console.log(response.data.data);
+        console.log(response.data);
+        if (response.data.code == 1) {
+          alert("Successfully bought");
+        } else {
+          alert(response.data.message);
+        }
       })
       .catch(function (error) {
         if (error.response) {
@@ -100,7 +114,7 @@ function Crypto() {
                       fullWidth
                       sx={{ padding: "2%" }}
                     />
-                    <Button type="submit" fullWidth sx={{ mt: 3, mb: 2 }}>
+                    <Button value={crypt.name} type="submit" fullWidth sx={{ mt: 3, mb: 2 }}>
                       Buy Now
                     </Button>
                   </Box>
