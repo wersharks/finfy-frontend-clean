@@ -38,7 +38,7 @@ import Transactions from "layouts/billing/components/Transactions";
 import { useState } from "react";
 
 function Bank() {
-  const [history, setHistory] = useState([]);
+  const [history, setHistory] = useState(["No record exists"]);
   axios
     .get("http://34.68.150.75:8080/bank/history", {
       headers: {
@@ -46,9 +46,9 @@ function Bank() {
       },
     })
     .then((response) => {
-      console.log(response.data.data);
-      setHistory(response.data.data);
-      console.log(history);
+      if (response.data.code === 1) {
+        setHistory(response.data.data);
+      }
     });
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
