@@ -154,7 +154,7 @@ function Bank() {
             <Grid item xs={12} lg={8}>
               <Grid container spacing={3}>
                 <Grid item xs={12} xl={6}>
-                  <MasterCard number={4562112245947852} holder="jack peterson" expires="11/22" />
+                  <MasterCard number={4562112245947852} expires="11/22" />
                 </Grid>
                 <Grid item xs={12} md={6} xl={3}>
                   <DefaultInfoCard
@@ -177,11 +177,13 @@ function Bank() {
                   >
                     <Box component="form" onSubmit={handleDeposit} noValidate sx={{ mt: 1 }}>
                       <TextField
-                        margin="normal"
                         id="outlined-select-deposit"
                         select
                         label="Select"
                         value={deposit}
+                        size="normal"
+                        variant="standard"
+                        padding="normal"
                         onChange={handleChange}
                         helperText="Select the amount of deposit you want to make "
                       >

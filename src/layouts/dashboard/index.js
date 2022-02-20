@@ -47,8 +47,6 @@ function Dashboard() {
       },
     })
     .then((response) => {
-      console.log(localStorage.getItem("token"));
-      console.log(response.data.data);
       setWallet(response.data.data);
     });
 

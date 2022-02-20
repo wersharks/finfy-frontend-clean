@@ -48,7 +48,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 function Projects() {
-  const [history, setHistory] = useState([]);
+  const [history, setHistory] = useState(["No entry exists"]);
   axios
     .get("http://34.68.150.75:8080/finance/history", {
       headers: {
@@ -56,7 +56,9 @@ function Projects() {
       },
     })
     .then((response) => {
-      setHistory(response.data.data);
+      if (response.data.code === 1) {
+        setHistory(response.data.data);
+      }
     });
 
   return (
